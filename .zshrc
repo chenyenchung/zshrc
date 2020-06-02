@@ -6,8 +6,19 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=/usr/X11/lib:$LD_LIBRARY_PATH
+case `uname` in
+  Darwin)
+    # commands for OS X go here
+    export LD_LIBRARY_PATH=/usr/X11/lib:$LD_LIBRARY_PATH
+  ;;
+  Linux)
+    # commands for Linux go here
+    export PATH=$HOME/.local/bin:$PATH
+  ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+  ;;
+esac
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
